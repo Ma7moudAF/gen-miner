@@ -1,0 +1,555 @@
+/* ========================================
+   Wallet Selection Modal Styles
+   أنماط مودال اختيار المحفظة
+======================================== */
+
+.wallet-modal .modal-content {
+    background: #1a1f29;
+    border-radius: 24px;
+    padding: 24px;
+    max-width: 420px;
+    width: 90%;
+}
+
+.wallet-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin: 16px 0 20px;
+    line-height: 1.5;
+}
+
+/* زر محفظة تليجرام */
+.btn-telegram-wallet {
+    width: 100%;
+    background: linear-gradient(135deg, #2AABEE, #229ED9);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-telegram-wallet:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(42, 171, 238, 0.4);
+}
+
+.btn-telegram-wallet:active {
+    transform: scale(0.98);
+}
+
+/* شبكة المحافظ */
+.wallet-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.wallet-option-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 16px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.wallet-option-card:hover {
+    background: rgba(0, 217, 255, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.wallet-option-card:active {
+    transform: translateY(-2px);
+}
+
+.wallet-icon {
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.wallet-name {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+/* أزرار الإجراءات */
+.wallet-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.wallet-action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 12px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.wallet-action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    border-color: var(--accent);
+}
+
+/* تذييل TonConnect */
+.ton-connect-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.ton-connect-footer img {
+    opacity: 0.5;
+}
+
+/* حالة المحفظة المتصلة */
+.wallet-connected-banner {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 102, 0.1));
+    border: 1px solid var(--success);
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.wallet-connected-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--success);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.wallet-connected-info {
+    flex: 1;
+}
+
+.wallet-connected-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.wallet-connected-address {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--success);
+    font-family: monospace;
+}
+
+/* أزرار الإيداع والسحب */
+.currency-selector {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border-radius: 12px;
+}
+
+.currency-option {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.currency-option.active {
+    background: var(--accent);
+    color: white;
+}
+
+.amount-input-group {
+    position: relative;
+    margin: 16px 0;
+}
+
+.amount-input-group .currency-label {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.max-button {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 217, 255, 0.2);
+    border: none;
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.max-button:hover {
+    background: rgba(0, 217, 255, 0.3);
+}
+
+/* Transaction History */
+.transaction-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-type {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.transaction-type.deposit {
+    color: var(--success);
+}
+
+.transaction-type.withdraw {
+    color: var(--danger);
+}
+
+.transaction-date {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.transaction-amount {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.transaction-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.transaction-status.pending {
+    background: rgba(255, 165, 0, 0.2);
+    color: #ffa500;
+}
+
+.transaction-status.completed {
+    background: rgba(0, 255, 136, 0.2);
+    color: var(--success);
+}
+
+.transaction-status.failed {
+    background: rgba(255, 51, 102, 0.2);
+    color: var(--danger);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .wallet-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wallet-actions {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading Animation */
+.wallet-loading {
+    text-align: center;
+    padding: 40px;
+}
+
+.wallet-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(0, 217, 255, 0.2);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 16px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+
+/* ========================================
+   Support Chat Styles - أنماط الدعم الفني
+======================================== */
+
+.support-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 16px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.support-message {
+    margin-bottom: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    animation: fadeIn 0.3s;
+}
+
+.support-message.user {
+    background: rgba(0, 217, 255, 0.1);
+    border-left: 3px solid var(--accent);
+    margin-right: 40px;
+}
+
+.support-message.admin {
+    background: rgba(255, 215, 0, 0.1);
+    border-right: 3px solid var(--gold);
+    margin-left: 40px;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 11px;
+}
+
+.message-sender {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.message-time {
+    color: var(--text-muted);
+}
+
+.message-body {
+    color: var(--text);
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+/* تحسين شريط التمرير */
+.support-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.support-messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.support-messages::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px;
+}
+
+.support-messages::-webkit-scrollbar-thumb:hover {
+    background: #00b8d9;
+}
+
+/* حقل إدخال الرسالة */
+.support-input-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.support-input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px;
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.support-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.08);
+}
+
+.support-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* زر الإرسال */
+.send-support-btn {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--accent), #0099cc);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-support-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 217, 255, 0.4);
+}
+
+.send-support-btn:active {
+    transform: scale(0.95);
+}
+
+/* حالة فارغة */
+.support-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 20px;
+}
+
+.support-empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+/* مودال الدعم */
+#supportModal .modal-content {
+    max-width: 500px;
+}
+
+/* رسالة ترحيبية */
+.support-welcome {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+    border: 1px solid var(--gold);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.support-welcome h3 {
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.support-welcome p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* حالة الكتابة */
+.typing-indicator {
+    display: none;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.typing-indicator.active {
+    display: block;
+}
+
+.typing-indicator span {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    #supportModal .modal-content {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .support-message.user {
+        margin-right: 20px;
+    }
+
+    .support-message.admin {
+        margin-left: 20px;
+    }
+}

@@ -1,0 +1,396 @@
+/* ========================================
+   Shop & My Rigs Page Styles
+======================================== */
+
+/* Shop Rigs Grid */
+#shopRigsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+/* Rig Card */
+.rig-card {
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.rig-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 217, 255, 0.2);
+}
+
+.rig-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.rig-card:hover::before {
+    opacity: 1;
+}
+
+/* Rig Icon */
+.rig-icon {
+    font-size: 64px;
+    text-align: center;
+    margin-bottom: 16px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Rig Header */
+.rig-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.rig-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.rig-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--gold);
+    background: rgba(255, 215, 0, 0.1);
+    padding: 6px 12px;
+    border-radius: 12px;
+}
+
+/* Rig Description */
+.rig-desc {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    min-height: 40px;
+}
+
+/* Rig Stats */
+.rig-stats {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.rig-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.rig-stat:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.stat-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.stat-value.highlight {
+    color: var(--success);
+    font-size: 16px;
+}
+
+/* Purchase Button */
+.btn-purchase {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--accent), #0099cc);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-purchase:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.4);
+}
+
+.btn-purchase:active {
+    transform: scale(0.98);
+}
+
+/* ========================================
+   My Rigs Page
+======================================== */
+
+/* Stats Header */
+.mining-stats-header {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 215, 0, 0.1));
+    border: 2px solid rgba(0, 217, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+}
+
+.stat-box-value {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--accent);
+    margin: 5px 0;
+}
+
+.stat-box-label {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* Claim Section */
+.claim-section {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 2px solid rgba(0, 255, 136, 0.2);
+}
+
+.pending-amount {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--success);
+    margin: 10px 0;
+}
+
+#claimBtn {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+/* User Rig Card */
+.user-rig-card {
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.user-rig-card.active {
+    border-color: rgba(0, 255, 136, 0.3);
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), transparent);
+}
+
+.user-rig-card.expired {
+    border-color: rgba(255, 51, 102, 0.3);
+    opacity: 0.7;
+}
+
+/* Status Badge */
+.rig-status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.rig-status-badge.active {
+    background: rgba(0, 255, 136, 0.2);
+    color: var(--success);
+}
+
+.rig-status-badge.expired {
+    background: rgba(255, 51, 102, 0.2);
+    color: var(--danger);
+}
+
+.rig-status-badge.inactive {
+    background: rgba(139, 146, 176, 0.2);
+    color: var(--text-muted);
+}
+
+/* Rig Info */
+.rig-info {
+    flex: 1;
+}
+
+.rig-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Rig Progress */
+.rig-progress {
+    margin: 16px 0;
+}
+
+/* Rig Earnings */
+.rig-earnings {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 16px 0;
+}
+
+.earnings-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.earnings-item:last-child {
+    border-bottom: none;
+}
+
+.earnings-item .label {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.earnings-item .value {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.earnings-item .value.highlight {
+    color: var(--success);
+    font-size: 16px;
+}
+
+.earnings-item.pending {
+    background: rgba(255, 215, 0, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.earnings-item.pending .value {
+    color: var(--gold);
+    font-size: 16px;
+}
+
+/* Rig Actions */
+.rig-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-action.renew {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.btn-action.upgrade {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    color: white;
+}
+
+.btn-action:hover {
+    transform: scale(1.05);
+}
+
+.btn-action:active {
+    transform: scale(0.98);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Upgrade Modal */
+.upgrade-option {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+
+.upgrade-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #shopRigsList {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rig-actions {
+        flex-direction: column;
+    }
+}

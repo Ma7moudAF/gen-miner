@@ -1,0 +1,277 @@
+/* ========================================
+   Mining Page Styles - أنماط صفحة التعدين
+======================================== */
+
+/* Mining Card */
+/* .mining-card {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(255, 215, 0, 0.05));
+    border: 2px solid rgba(0, 217, 255, 0.2);
+    border-radius: 24px;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mining-icon {
+    font-size: 100px;
+    margin: 20px 0;
+    animation: float 3s ease-in-out infinite;
+}
+
+.gen-amount {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    margin: 10px 0;
+}
+
+.mining-label {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Progress Bar */
+.progress-wrapper {
+    margin: 20px 0;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    border-radius: 10px;
+    transition: width 0.3s;
+} */
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+/* Tasks */
+.task-item {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 16px;
+    margin: 12px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.task-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.task-reward {
+    background: var(--gold);
+    color: var(--bg-primary);
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.task-progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 8px 0;
+}
+
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.btn-claim {
+    background: var(--success);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-claim:hover {
+    transform: scale(1.05);
+}
+
+.btn-claim:disabled {
+    background: var(--text-muted);
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+/* Task Item States */
+.ta.sk-itemin-progress {
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0%, 100% { border-color: var(--accent); }
+    50% { border-color: var(--accent-2); }
+}
+
+/* Button States */
+.btn-claim.disabled {
+    background: #9CA3AF;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-claim.ready {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    animation: pulse-button 1.5s infinite;
+}
+
+@keyframes pulse-button {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Password Icon */
+.task-title span {
+    display: inline-block;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Password Modal Styles */
+.password-modal {
+    max-width: 400px;
+    animation: slideUp 0.3s ease;
+}
+
+.password-hint {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.password-input-wrapper {
+    margin-bottom: 15px;
+}
+
+.password-input {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.password-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(0, 217, 255, 0.1);
+}
+
+.password-error {
+    background: rgba(255, 51, 102, 0.1);
+    border: 1px solid var(--danger);
+    padding: 12px;
+    border-radius: 8px;
+    color: var(--danger);
+    font-size: 13px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.password-error.hidden {
+    display: none;
+}
+
+.modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+    transform: scale(0.98);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .password-modal {
+        max-width: 90%;
+    }
+}
