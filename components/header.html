@@ -1,0 +1,84 @@
+<!-- Header Component -->
+<div class="top-bar">
+    <div class="logo">⛏️ GEN Mining</div>
+    <div class="balance-row">
+        <div class="chip">💎 <span id="topGen">0.00</span></div>
+        <div class="chip">💰 <span id="topUsdt">0.00</span></div>
+        <button class="icon-btn" id="walletBtn" onclick="openWalletModal()" title="Connect Wallet">🔷</button>
+        <button class="icon-btn" onclick="openSettings()">⚙️</button>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="toast"></div>
+
+<!-- Settings Modal -->
+<div id="settingsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">⚙️ الإعدادات</div>
+            <button class="close-btn" onclick="closeModal('settingsModal')">×</button>
+        </div>
+        <div style="line-height: 3;">
+            <div style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>👤 الاسم</span>
+                    <span id="settingsName">--</span>
+                </div>
+            </div>
+            <div style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>🆔 المعرف</span>
+                    <span id="settingsId">--</span>
+                </div>
+            </div>
+            <div style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>💼 المحفظة</span>
+                    <span id="settingsWallet">--</span>
+                </div>
+            </div>
+            <div style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>📅 تاريخ الانضمام</span>
+                    <span id="settingsDate">--</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button class="btn btn-primary" onclick="isWalletConnected ? disconnectWallet() : openWalletConnect()" style="margin-bottom: 10px;">
+                <span id="walletBtnText">🔷 connect Wallet</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Wallet Connect Modal -->
+<div id="walletConnectModal" class="modal">
+    <div class="modal-content wallet-modal-content">
+        <div class="modal-header">
+            <div class="modal-title">🔷 connect Wallet</div>
+            <button class="close-btn" onclick="closeModal('walletConnectModal')">×</button>
+        </div>
+
+        <p style="color: var(--text-muted); margin-bottom: 20px; text-align: center;">
+            اختر المحفظة التي تريد الربط بها
+        </p>
+
+        <div class="wallet-options">
+            <div class="wallet-option" onclick="connectTelegramWallet()">
+                <div class="wallet-option-icon">💼</div>
+                <div class="wallet-option-name">Telegram Wallet</div>
+            </div>
+            <div class="wallet-option" onclick="connectWallet('Tonkeeper')">
+                <div class="wallet-option-icon">💎</div>
+                <div class="wallet-option-name">Tonkeeper</div>
+            </div>
+            <div class="wallet-option" onclick="connectWallet('TonHub')">
+                <div class="wallet-option-icon">🔷</div>
+                <div class="wallet-option-name">TonHub</div>
+            </div>
+        </div>
+    </div>
+</div>
