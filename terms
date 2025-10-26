@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>⚖️ Terms of Service - GEN Mining</title>
+
+    <!-- Telegram Web App -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/legal.css">
+</head>
+<body data-page="terms">
+
+    <!-- Header Component -->
+    <div id="headerContainer"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="legal-card">
+            <!-- Header -->
+            <div class="legal-header">
+                <div class="legal-icon">⚖️</div>
+                <h1 class="legal-title">Terms of Service</h1>
+                <p class="legal-subtitle">شروط استخدام منصة GEN Mining</p>
+                <div class="legal-date">آخر تحديث: 23 أكتوبر 2025</div>
+            </div>
+
+            <!-- Content -->
+            <div class="legal-content">
+                <!-- Section 1 -->
+                <div class="legal-section">
+                    <h2 class="section-title">📜 1. القبول بالشروط</h2>
+                    <p class="section-text">
+                        باستخدامك لمنصة GEN Mining، فإنك توافق على الالتزام بهذه الشروط والأحكام. إذا كنت لا توافق على أي جزء من هذه الشروط، يرجى عدم استخدام المنصة.
+                    </p>
+                </div>
+
+                <!-- Section 2 -->
+                <div class="legal-section">
+                    <h2 class="section-title">👤 2. الحسابات والتسجيل</h2>
+                    <ul class="section-list">
+                        <li>يجب أن تكون فوق 18 عامًا لاستخدام المنصة</li>
+                        <li>يجب تقديم معلومات صحيحة ودقيقة عند التسجيل</li>
+                        <li>أنت مسؤول عن الحفاظ على أمان حسابك</li>
+                        <li>حساب واحد فقط لكل مستخدم</li>
+                        <li>يُحظر مشاركة الحساب مع أطراف أخرى</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3 -->
+                <div class="legal-section">
+                    <h2 class="section-title">⛏️ 3. التعدين والمكافآت</h2>
+                    <ul class="section-list">
+                        <li>عملات GEN المُولدة هي عملة افتراضية داخل المنصة</li>
+                        <li>قيمة GEN قابلة للتغيير في أي وقت</li>
+                        <li>المكافآت تُمنح بناءً على قوة التعدين والوقت المستغرق</li>
+                        <li>يحق للمنصة تعديل معدلات التعدين دون إشعار مسبق</li>
+                        <li>التلاعب أو استخدام البوتات يؤدي إلى إيقاف الحساب نهائيًا</li>
+                    </ul>
+                </div>
+
+                <!-- Section 4 -->
+                <div class="legal-section">
+                    <h2 class="section-title">🎯 4. المهام والإحالات</h2>
+                    <ul class="section-list">
+                        <li>يجب إكمال المهام بشكل حقيقي وصادق</li>
+                        <li>استخدام حسابات وهمية للإحالات محظور</li>
+                        <li>مكافآت الإحالة تُمنح فقط للإحالات النشطة والحقيقية</li>
+                        <li>يحق للمنصة إلغاء المكافآت المشبوهة</li>
+                    </ul>
+                </div>
+
+                <!-- Section 5 -->
+                <div class="legal-section">
+                    <h2 class="section-title">💰 5. السحب والإيداع</h2>
+                    <ul class="section-list">
+                        <li>يجب ربط محفظة TON صالحة لإتمام السحب</li>
+                        <li>الحد الأدنى للسحب قد يتغير من وقت لآخر</li>
+                        <li>معالجة طلبات السحب قد تستغرق من 1-7 أيام عمل</li>
+                        <li>يحق للمنصة رفض طلبات السحب المشبوهة</li>
+                        <li>رسوم الشبكة تُخصم من المبلغ المسحوب</li>
+                    </ul>
+                </div>
+
+                <!-- Section 6 -->
+                <div class="legal-section">
+                    <h2 class="section-title">🚫 6. السلوكيات المحظورة</h2>
+                    <div class="warning-box">
+                        <p class="warning-title">⚠️ يُحظر تمامًا:</p>
+                        <ul class="section-list">
+                            <li>استخدام برامج أو أدوات آلية (بوتات)</li>
+                            <li>إنشاء حسابات متعددة</li>
+                            <li>التلاعب بنظام المكافآت</li>
+                            <li>بيع أو نقل الحساب</li>
+                            <li>نشر محتوى مسيء أو غير قانوني</li>
+                            <li>محاولة اختراق أو إلحاق الضرر بالمنصة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 7 -->
+                <div class="legal-section">
+                    <h2 class="section-title">🛡️ 7. إخلاء المسؤولية</h2>
+                    <p class="section-text">
+                        المنصة تُقدم "كما هي" دون أي ضمانات. نحن غير مسؤولين عن:
+                    </p>
+                    <ul class="section-list">
+                        <li>خسارة الأرباح أو البيانات</li>
+                        <li>أخطاء أو انقطاعات في الخدمة</li>
+                        <li>تقلبات أسعار العملات الرقمية</li>
+                        <li>أي أضرار مباشرة أو غير مباشرة</li>
+                    </ul>
+                </div>
+
+                <!-- Section 8 -->
+                <div class="legal-section">
+                    <h2 class="section-title">🔄 8. التعديلات على الشروط</h2>
+                    <p class="section-text">
+                        نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم إخطارك بالتعديلات الجوهرية، واستمرارك في استخدام المنصة يعني قبولك للشروط المُحدثة.
+                    </p>
+                </div>
+
+                <!-- Section 9 -->
+                <div class="legal-section">
+                    <h2 class="section-title">📧 9. التواصل</h2>
+                    <p class="section-text">
+                        لأي استفسارات أو شكاوى، يرجى التواصل معنا عبر:
+                    </p>
+                    <div class="contact-box">
+                        <p>📱 تليجرام: <a href="https://t.me/YourSupportBot" target="_blank">@YourSupportBot</a></p>
+                        <p>✉️ البريد الإلكتروني: support@genmining.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="legal-footer">
+                <button class="btn btn-primary" onclick="window.history.back()">
+                    ✅ قرأت وأوافق على الشروط
+                </button>
+                <a href="privacy.html" class="legal-link">
+                    🔒 سياسة الخصوصية
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Component -->
+    <div id="footerContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script>
+        // Load components
+        loadComponent('headerContainer', 'components/header.html');
+        loadComponent('footerContainer', 'components/footer.html');
+    </script>
+</body>
+</html>

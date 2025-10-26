@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>👥 GEN Mining - الأصدقاء</title>
+
+    <!-- Telegram Web App -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/friends.css">
+</head>
+<body data-page="friends">
+
+    <!-- Header Component -->
+    <div id="headerContainer"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Referral Box -->
+        <div class="referral-box">
+            <h2 style="margin-bottom: 16px;">👥 Invite Friends</h2>
+            <p style="color: var(--text-muted); margin-bottom: 16px;">
+                Get rewards from 3 levels
+            </p>
+            <div style="margin: 20px 0;">
+                <div style="font-size: 14px; margin: 8px 0;">First Level: 15% From Deposits 🥇</div>
+                <div style="font-size: 14px; margin: 8px 0;">Second Level: 7% From Deposits 🥈</div>
+                <div style="font-size: 14px; margin: 8px 0;">Third Level: 3% From Deposits 🥉</div>
+            </div>
+            <div class="referral-link" id="referralLink">...</div>
+            <button class="btn btn-primary" onclick="shareInvite()">
+                📤 Share your link
+            </button>
+            <div class="share-btns">
+                <button class="share-btn" onclick="shareOn('whatsapp')">💬</button>
+                <button class="share-btn" onclick="shareOn('telegram')">✈️</button>
+                <button class="share-btn" onclick="shareOn('facebook')">📘</button>
+                <button class="share-btn" onclick="shareOn('twitter')">🦅</button>
+            </div>
+        </div>
+
+        <!-- Tabs للمستويات -->
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab(0)">
+            First Level </div>
+            <div class="tab" onclick="switchTab(1)">
+            Second Level </div>
+            <div class="tab" onclick="switchTab(2)">
+            Third Level </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="level1Content" class="tab-content active">
+            <h3 style="margin: 16px 0;">  First Level Friends : <span id="level1Count">0</span> </h3>
+            <div id="level1List">
+                <div class="loading"><div class="spinner"></div></div>
+            </div>
+        </div>
+
+        <div id="level2Content" class="tab-content">
+            <h3 style="margin: 16px 0;">  Second Level Friends : <span id="level2Count">0</span> </h3>
+            <div id="level2List">
+                <div class="loading"><div class="spinner"></div></div>
+            </div>
+        </div>
+
+        <div id="level3Content" class="tab-content">
+            <h3 style="margin: 16px 0;">  Third Level Friends
+ : <span id="level3Count">0</span> </h3>
+            <div id="level3List">
+                <div class="loading"><div class="spinner"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Component -->
+    <div id="footerContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/friends.js"></script>
+    <script src="js/wallet.js"></script>
+
+    <script>
+        // Load components
+        loadComponent('headerContainer', 'components/header.html');
+        loadComponent('footerContainer', 'components/footer.html');
+    </script>
+</body>
+</html>

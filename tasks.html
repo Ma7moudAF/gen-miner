@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🎯 GEN Tasks</title>
+
+    <!-- Telegram Web App -->
+    <!-- <script src="https://unpkg.com/@tonconnect/sdk@latest/dist/tonconnect-sdk.min.js"></script> -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/tasks.css">
+</head>
+<body data-page="tasks">
+
+    <!-- Header Component -->
+    <div id="headerContainer"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Mining Card -->
+        <!-- <div class="mining-card">
+            <div class="mining-icon">⛏️</div>
+            <div class="gen-amount" id="genEarned">0</div>
+            <div class="mining-label">GEN Mined</div>
+
+            <div class="progress-wrapper">
+                <div class="progress-info">
+                    <span id="timeRemaining">--:--</span>
+                    <span id="miningPower">Power: 0</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="miningProgress" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" id="startBtn" onclick="handleStartMining()">
+                🚀 Start Mining
+            </button>
+            <button class="btn btn-primary hidden" id="collectBtn" onclick="handleCollectMining()">
+                🎁 Take Profits
+            </button>
+        </div> -->
+
+        <!-- Password Modal -->
+        <div class="modal" id="passwordModal">
+            <div class="modal-content password-modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">🔑 كلمة السر</h3>
+                    <button class="close-btn" onclick="closePasswordModal()">×</button>
+                </div>
+
+                <div class="modal-body">
+                    <p class="password-hint">أدخل كلمة السر الموجودة في الفيديو</p>
+
+                    <div class="password-input-wrapper">
+                        <input 
+                            type="text" 
+                            id="passwordInput" 
+                            class="password-input" 
+                            placeholder="أدخل كلمة السر هنا..."
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div id="passwordError" class="password-error hidden"></div>
+
+                    <div class="modal-actions">
+                        <button class="btn-secondary" onclick="reopenTaskLink()">
+                            🔄 إعادة فتح الفيديو
+                        </button>
+                        <button class="btn-primary" onclick="submitPassword()">
+                            ✅ تأكيد
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <!-- <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value" id="inviteCount">0</div>
+                <div class="stat-label">Invites</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value" id="userStage">1</div>
+                <div class="stat-label">Level</div>
+            </div>
+        </div> -->
+
+        <!-- Tasks Section -->
+        <h3 style="margin: 20px 0;">🎯 Current Tasks</h3>
+        <div id="tasksList">
+            <div class="loading"><div class="spinner"></div></div>
+        </div>
+    </div>
+
+    <!-- Footer Component -->
+    <div id="footerContainer"></div>
+
+    <!-- Scripts -->
+    <!-- <script src="https://unpkg.com/@tonconnect/sdk@3.3.1/dist/tonconnect-sdk.min.js"></script> -->
+    
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/wallet.js"></script>
+
+    <script>
+        // Load components
+        loadComponent('headerContainer', 'components/header.html');
+        loadComponent('footerContainer', 'components/footer.html');
+    </script>
+</body>
+</html>

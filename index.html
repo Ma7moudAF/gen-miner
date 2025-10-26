@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>💼 My Rigs - GEN Mining</title>
+
+    <!-- Telegram Web App -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+<body data-page="my-rigs">
+
+    <!-- Header Component -->
+    <div id="headerContainer"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Mining Stats Header -->
+        <div class="mining-stats-header">
+            <h3 style="margin-bottom: 16px; text-align: center;">📊 Mining Statistics</h3>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-box-value" id="totalInvested">0.00</div>
+                    <div class="stat-box-label">💰 Total Invested</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-box-value" id="totalEarned">0.00</div>
+                    <div class="stat-box-label">📈 Total Earned</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-box-value" id="dailyProfit">0.00</div>
+                    <div class="stat-box-label">⚡ Daily Profit</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-box-value" id="activeRigs">0</div>
+                    <div class="stat-box-label">🔧 Active Rigs</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-box-value" id="roiPercent">0%</div>
+                    <div class="stat-box-label">📊 ROI</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Claim Section -->
+        <div class="claim-section">
+            <div style="font-size: 14px; color: var(--text-muted); margin-bottom: 10px;">
+                💰 Pending Earnings
+            </div>
+            <div class="pending-amount">$<span id="totalPending">0.00</span></div>
+            <button class="btn btn-primary" id="claimBtn" onclick="handleClaimEarnings()">
+                💰 Claim Earnings
+            </button>
+        </div>
+
+        <!-- My Rigs Section -->
+        <h3 style="margin: 20px 0;">🔧 My Mining Devices</h3>
+
+        <div id="myRigsList">
+            <div class="loading"><div class="spinner"></div></div>
+        </div>
+    </div>
+
+    <!-- Upgrade Modal -->
+    <div id="upgradeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">⬆️ Upgrade Device</div>
+                <button class="close-btn" onclick="closeModal('upgradeModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Content will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Component -->
+    <div id="footerContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/my-rigs.js"></script>
+    <script src="js/wallet.js"></script>
+
+    <script>
+        // Load components
+        loadComponent('headerContainer', 'components/header.html');
+        loadComponent('footerContainer', 'components/footer.html');
+    </script>
+</body>
+</html>

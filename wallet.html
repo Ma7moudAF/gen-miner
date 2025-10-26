@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 المحفظة - Wallet</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/wallet.css">
+    
+    <style>
+        .wallet-header {
+            background: linear-gradient(135deg, #1a1f29, #0f1419);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .wallet-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--danger);
+        }
+        
+        .status-indicator.connected {
+            background: var(--success);
+            box-shadow: 0 0 12px var(--success);
+        }
+        
+        .connect-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #2AABEE, #229ED9);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .connect-btn.connected {
+            background: linear-gradient(135deg, var(--success), #00cc66);
+        }
+        
+        .balance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .balance-card {
+            background: var(--bg-secondary);
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .balance-card-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .balance-card-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        
+        .balance-card-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .action-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .action-card {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .action-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        
+        .action-card-icon {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+        
+        .action-card.deposit {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 102, 0.1));
+        }
+        
+        .action-card.withdraw {
+            background: linear-gradient(135deg, rgba(255, 110, 196, 0.1), rgba(255, 51, 102, 0.1));
+        }
+        
+        .transaction-list {
+            margin-top: 20px;
+        }
+        
+        .transaction-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tx-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .tx-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .tx-icon.deposit {
+            background: rgba(0, 255, 136, 0.2);
+        }
+        
+        .tx-icon.withdraw {
+            background: rgba(255, 51, 102, 0.2);
+        }
+        
+        .tx-info h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .tx-date {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        
+        .tx-right {
+            text-align: right;
+        }
+        
+        .tx-amount {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .tx-amount.deposit {
+            color: var(--success);
+        }
+        
+        .tx-amount.withdraw {
+            color: var(--danger);
+        }
+        
+        .tx-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        
+        .tx-status.pending {
+            background: rgba(255, 165, 0, 0.2);
+            color: #ffa500;
+        }
+        
+        .tx-status.approved {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+        }
+        
+        .tips-box {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 16px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .tips-box h3 {
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+        
+        .modal-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px;
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 16px;
+            margin: 12px 0;
+        }
+        
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .info-box {
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid var(--accent);
+            padding: 12px;
+            border-radius: 12px;
+            margin: 12px 0;
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body data-page="wallet">
+
+    <div id="headerContainer"></div>
+
+    <div class="container">
+        <!-- Wallet Connection Header -->
+        <div class="wallet-header">
+            <div class="wallet-status">
+                <div class="status-indicator" id="walletStatusIndicator"></div>
+                <span id="walletStatusText">غير متصل</span>
+            </div>
+            <button class="connect-btn" id="mainConnectBtn">
+                🔷 ربط المحفظة
+            </button>
+        </div>
+
+        <!-- Balance Cards -->
+        <div class="balance-grid">
+            <div class="balance-card">
+                <div class="balance-card-icon">💵</div>
+                <div class="balance-card-label">رصيد USDT</div>
+                <div class="balance-card-value" id="usdtBalance">0.00</div>
+            </div>
+            <div class="balance-card">
+                <div class="balance-card-icon">💎</div>
+                <div class="balance-card-label">رصيد GEN</div>
+                <div class="balance-card-value" id="genBalance">0</div>
+            </div>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="action-grid">
+            <div class="action-card deposit" id="depositBtn">
+                <div class="action-card-icon">⬇️</div>
+                <div style="font-weight: 700;">إيداع</div>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                    Deposit USDT
+                </div>
+            </div>
+            <div class="action-card withdraw" id="withdrawBtn">
+                <div class="action-card-icon">⬆️</div>
+                <div style="font-weight: 700;">سحب</div>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                    Withdraw USDT
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Button -->
+        <button class="btn btn-primary" id="supportBtn" style="background: linear-gradient(135deg, #ffd700, #ff9500);">
+            💬 الدعم الفني
+        </button>
+
+        <!-- Transaction History -->
+        <div class="tips-box">
+            <h3>📊 آخر المعاملات</h3>
+            <div class="transaction-list" id="transactionList">
+                <p style="text-align: center; color: var(--text-muted); padding: 20px;">
+                    لا توجد معاملات
+                </p>
+            </div>
+        </div>
+
+        <!-- Info Box -->
+        <div class="tips-box">
+            <h3>ℹ️ معلومات مهمة</h3>
+            <div style="line-height: 2; font-size: 13px; color: var(--text-muted);">
+                <p>• الحد الأدنى للإيداع: 1 USDT</p>
+                <p>• الحد الأدنى للسحب: 5 USDT</p>
+                <p>• وقت معالجة السحب: 24 ساعة</p>
+                <p>• رصيد الإحالات: <span id="refBalanceInfo">0</span> USDT</p>
+                <p>• الحد الأقصى للسحب: <span id="maxWithdrawInfo">0</span> USDT</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deposit Modal -->
+    <div id="depositModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">⬇️ إيداع USDT</div>
+                <button class="close-btn" onclick="closeModal('depositModal')">×</button>
+            </div>
+            
+            <div class="info-box">
+                💡 أرسل USDT (TRC20) وسيتم إضافته لرصيدك خلال دقائق
+            </div>
+            
+            <input 
+                type="number" 
+                class="modal-input" 
+                id="depositAmount" 
+                placeholder="أدخل المبلغ"
+                step="0.1"
+                min="1"
+            >
+            
+            <div style="text-align: center; margin: 12px 0; color: var(--text-muted); font-size: 13px;">
+                الحد الأدنى: 1 USDT
+            </div>
+            
+            <button class="btn btn-primary" id="depositSubmitBtn">
+                ✅ إرسال USDT
+            </button>
+        </div>
+    </div>
+
+    <!-- Withdraw Modal -->
+    <div id="withdrawModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">⬆️ سحب USDT</div>
+                <button class="close-btn" onclick="closeModal('withdrawModal')">×</button>
+            </div>
+            
+            <div class="info-box">
+                💰 الرصيد المتاح: <span id="availableBalanceDisplay">0</span> USDT
+            </div>
+            
+            <input 
+                type="number" 
+                class="modal-input" 
+                id="withdrawAmount" 
+                placeholder="أدخل المبلغ"
+                step="1"
+                min="5"
+            >
+            
+            <div class="wallet-address" style="margin: 12px 0; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 8px; font-size: 12px;">
+                المحفظة: <span id="userWalletDisplay">غير متصل</span>
+            </div>
+            
+            <div class="info-box" style="background: rgba(255, 51, 102, 0.1); border-color: var(--danger);">
+                ⚠️ الحد الأدنى: 5 USDT<br>
+                ⏱️ وقت المعالجة: حتى 24 ساعة
+            </div>
+            
+            <button class="btn btn-primary" id="withdrawSubmitBtn">
+                📤 إرسال طلب السحب
+            </button>
+        </div>
+    </div>
+
+    <!-- Support Chat Modal -->
+    <div id="supportModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <div class="modal-title">💬 الدعم الفني</div>
+                <button class="close-btn" onclick="closeModal('supportModal')">×</button>
+            </div>
+            
+            <div class="support-messages" id="supportMessages">
+                <!-- Messages will load here -->
+            </div>
+            
+            <div style="display: flex; gap: 8px;">
+                <input 
+                    type="text" 
+                    id="supportMessageInput" 
+                    placeholder="اكتب رسالتك..."
+                    style="flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 12px; color: var(--text);"
+                    onkeypress="if(event.key==='Enter') sendSupportMessageFunc()"
+                >
+                <button class="btn-action" onclick="sendSupportMessageFunc()">📤</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="footerContainer"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/wallet.js"></script>
+
+    <script>
+        // تحميل المكونات
+        document.addEventListener('DOMContentLoaded', () => {
+            loadComponent('headerContainer', 'components/header.html');
+            loadComponent('footerContainer', 'components/footer.html');
+        });
+        
+        // Initialize wallet page
+        async function initWalletPage() {
+            await loadUser();
+            updateWalletDisplayLocal();
+            updateWalletUILocal();
+            loadTransactions();
+            
+            // إضافة Event Listeners
+            setupEventListeners();
+            
+            // تحديث دوري
+            setInterval(() => {
+                updateWalletUILocal();
+            }, 5000);
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            const mainConnectBtn = document.getElementById('mainConnectBtn');
+            if (mainConnectBtn) {
+                mainConnectBtn.addEventListener('click', () => {
+                    if (window.APP_STATE.isWalletConnected) {
+                        if (typeof window.disconnectTonWallet === 'function') {
+                            window.disconnectTonWallet();
+                        }
+                    } else {
+                        if (typeof window.openWalletModal === 'function') {
+                            window.openWalletModal();
+                        }
+                    }
+                });
+            }
+            
+            const depositBtn = document.getElementById('depositBtn');
+            if (depositBtn) {
+                depositBtn.addEventListener('click', () => {
+                    if (typeof window.openDepositModal === 'function') {
+                        window.openDepositModal();
+                    }
+                });
+            }
+            
+            const withdrawBtn = document.getElementById('withdrawBtn');
+            if (withdrawBtn) {
+                withdrawBtn.addEventListener('click', () => {
+                    if (typeof window.openWithdrawModal === 'function') {
+                        window.openWithdrawModal();
+                    }
+                });
+            }
+            
+            const supportBtn = document.getElementById('supportBtn');
+            if (supportBtn) {
+                supportBtn.addEventListener('click', () => {
+                    if (typeof window.openSupportChat === 'function') {
+                        window.openSupportChat();
+                    }
+                });
+            }
+            
+            // Modal buttons
+            const depositSubmitBtn = document.getElementById('depositSubmitBtn');
+            if (depositSubmitBtn) {
+                depositSubmitBtn.addEventListener('click', () => {
+                    if (typeof window.depositUSDT === 'function') {
+                        window.depositUSDT();
+                    }
+                });
+            }
+            
+            const withdrawSubmitBtn = document.getElementById('withdrawSubmitBtn');
+            if (withdrawSubmitBtn) {
+                withdrawSubmitBtn.addEventListener('click', () => {
+                    if (typeof window.withdrawUSDT === 'function') {
+                        window.withdrawUSDT();
+                    }
+                });
+            }
+        }
+        
+        // Local update functions (لتجنب التعارض)
+        function updateWalletUILocal() {
+            const isConnected = window.APP_STATE.isWalletConnected;
+            const address = window.APP_STATE.walletAddress;
+            
+            const indicator = document.getElementById('walletStatusIndicator');
+            const statusText = document.getElementById('walletStatusText');
+            const connectBtn = document.getElementById('mainConnectBtn');
+            
+            if (!indicator || !statusText || !connectBtn) return;
+            
+            if (isConnected && address) {
+                indicator.classList.add('connected');
+                statusText.textContent = `متصل: ${address}`;
+                connectBtn.textContent = '❌ قطع الاتصال';
+                connectBtn.classList.add('connected');
+                
+                const userWalletDisplay = document.getElementById('userWalletDisplay');
+                if (userWalletDisplay) {
+                    userWalletDisplay.textContent = address;
+                }
+            } else {
+                indicator.classList.remove('connected');
+                statusText.textContent = 'غير متصل';
+                connectBtn.textContent = '🔷 ربط المحفظة';
+                connectBtn.classList.remove('connected');
+            }
+        }
+        
+        // Update balance display
+        function updateWalletDisplayLocal() {
+            const userData = window.APP_STATE.userData;
+            if (!userData) return;
+            
+            document.getElementById('usdtBalance').textContent = 
+                parseFloat(userData.balance || 0).toFixed(2);
+            
+            const genBalance = parseFloat(userData.gen_balance || 0);
+            document.getElementById('genBalance').textContent = fmt(genBalance);
+            
+            const refBalance = parseFloat(userData.referral_balance || 0);
+            document.getElementById('refBalanceInfo').textContent = refBalance.toFixed(2);
+            
+            const maxWithdraw = refBalance * 2;
+            document.getElementById('maxWithdrawInfo').textContent = maxWithdraw.toFixed(2);
+            document.getElementById('availableBalanceDisplay').textContent = 
+                parseFloat(userData.balance || 0).toFixed(2);
+        }
+        
+        // Load transactions
+        async function loadTransactions() {
+            try {
+                // تأكد من وجود الدالة
+                if (typeof getTransactionHistory !== 'function') {
+                    console.warn('getTransactionHistory not available');
+                    return;
+                }
+                
+                const result = await getTransactionHistory();
+                if (result && result.success && result.transactions && result.transactions.length > 0) {
+                    renderTransactions(result.transactions);
+                }
+            } catch (error) {
+                console.error('Failed to load transactions:', error);
+            }
+        }
+        
+        // Render transactions
+        function renderTransactions(transactions) {
+            const container = document.getElementById('transactionList');
+            if (!transactions || transactions.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 20px;">لا توجد معاملات</p>';
+                return;
+            }
+            
+            container.innerHTML = transactions.map(tx => `
+                <div class="transaction-item">
+                    <div class="tx-left">
+                        <div class="tx-icon ${tx.type}">
+                            ${tx.type === 'deposit' ? '⬇️' : '⬆️'}
+                        </div>
+                        <div class="tx-info">
+                            <h4>${tx.type === 'deposit' ? 'إيداع' : 'سحب'}</h4>
+                            <div class="tx-date">${formatDate(tx.created_at)}</div>
+                        </div>
+                    </div>
+                    <div class="tx-right">
+                        <div class="tx-amount ${tx.type}">
+                            ${tx.type === 'deposit' ? '+' : '-'}${tx.amount} ${tx.currency || 'USDT'}
+                        </div>
+                        <span class="tx-status ${tx.status}">${getStatusText(tx.status)}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'قيد المراجعة',
+                'approved': 'مكتمل',
+                'rejected': 'مرفوض'
+            };
+            return statusMap[status] || status;
+        }
+        
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = now - date;
+            
+            if (diff < 60000) return 'الآن';
+            if (diff < 3600000) return `${Math.floor(diff/60000)} دقيقة`;
+            if (diff < 86400000) return `${Math.floor(diff/3600000)} ساعة`;
+            return date.toLocaleDateString('ar');
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // انتظر تحميل wallet.js
+            setTimeout(() => {
+                initWalletPage();
+            }, 100);
+        });
+    </script>
+</body>
+</html>
