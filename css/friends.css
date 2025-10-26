@@ -1,0 +1,176 @@
+/* ========================================
+   Friends Page Styles - أنماط صفحة الأصدقاء
+======================================== */
+
+/* Referral Box */
+.referral-box {
+    background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 215, 0, 0.1));
+    border: 1px solid var(--accent);
+    padding: 24px;
+    border-radius: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.referral-link {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 16px;
+    border-radius: 12px;
+    margin: 16px 0;
+    word-break: break-all;
+    font-size: 13px;
+    color: var(--accent);
+    border: 1px dashed var(--accent);
+}
+
+.share-btns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.share-btn {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.share-btn:hover {
+    background: rgba(0, 217, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.tab {
+    flex: 1;
+    min-width: 100px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.tab.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Friend Item */
+.friend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: 12px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+}
+
+.friend-item:hover {
+    border-color: rgba(0, 217, 255, 0.3);
+    transform: translateX(-4px);
+}
+
+.friend-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.friend-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    object-fit: cover;
+}
+
+.friend-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.friend-username {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.friend-reward {
+    color: var(--gold);
+    font-weight: 700;
+}
+
+/* Rewards Info */
+.rewards-info {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 16px;
+    margin: 20px 0;
+}
+
+.reward-level {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.reward-level:last-child {
+    border-bottom: none;
+}
+
+.reward-level-icon {
+    font-size: 24px;
+}
+
+.reward-level-text {
+    flex: 1;
+    margin: 0 12px;
+}
+
+.reward-level-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.reward-level-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.reward-level-amount {
+    font-weight: 700;
+    color: var(--gold);
+}
